@@ -1,16 +1,19 @@
-# tic_tac_toe
+# Tic-Tac-Toe
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
+A cross-platform Tic-Tac-Toe game built with Flutter framework. 
 
-This project is a starting point for a Flutter application.
+## Issues
 
-A few resources to get you started if this is your first Flutter project:
+You may find issues while running this app.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+`Error:`
+> The base href in "web/index.html" must be absolute (i.e. start with a "/")...
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`Solution`: Comment out the below line in [web/index.html](web/index.html)
+
+```html
+<base href="tic-tac-toe">
+```
+
