@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/utilities/constants.dart';
 
 import '../models/game_state.dart';
+import '../theme/color_theme.dart';
 import '../widgets/tile_widget.dart';
 
 /// Home page of the app
@@ -122,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return;
     }
     bool filled = true;
+
     for (int i = 0; i < boardState.length; i++) {
       for (int j = 0; j < boardState[i].length; j++) {
         if (boardState[i][j] == 0) {
@@ -142,17 +145,90 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     tileSize = MediaQuery.of(context).size.height / 5;
+
+    final headline4Theme = Theme.of(context).textTheme.headline4;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Turn for : Player ${gameState.currentTurn}"),
+        // title: Text("Turn for : Player ${gameState.currentTurn}"),
+        title: const Text("Tic-Tac-Toe"),
+        centerTitle: true,
       ),
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 3,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height: 60,
+                        child: Row(
+                          children: [
+                            Image.asset(sriHariFilePath),
+                            const SizedBox(width: 24),
+                            Text(
+                              "Player 1",
+                              style: headline4Theme!.copyWith(
+                                color: enumToColor(1),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 24),
+                    Text(
+                      'vs',
+                      style: headline4Theme,
+                    ),
+                    const SizedBox(width: 24),
+                    Expanded(
+                      child: SizedBox(
+                        height: 60,
+                        child: Row(
+                          children: [
+                            Text(
+                              "Player 2",
+                              style: headline4Theme.copyWith(
+                                color: enumToColor(2),
+                              ),
+                            ),
+                            const SizedBox(width: 24),
+                            Image.asset(mouliFilePath),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.headline4,
+                  children: [
+                    const TextSpan(
+                      text: "Turn for : ",
+                    ),
+                    TextSpan(
+                      text: "Player ${gameState.currentTurn}",
+                      style: TextStyle(
+                        color: enumToColor(gameState.currentTurn),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Text(
+              //   "Turn for : Player ${gameState.currentTurn}",
+              //   style: Theme.of(context).textTheme.headline4,
+              // ),
+              const SizedBox(height: 24),
               GameRow(
                 row: boardState[0],
                 rowNumber: 0,

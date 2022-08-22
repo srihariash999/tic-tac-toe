@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
+import 'package:tic_tac_toe/utilities/constants.dart';
 
 /// Tile size of the game board
 double tileSize = 120.0;
@@ -59,11 +60,11 @@ class TileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (state == 1) {
       return const TileContainer(
-        imagePath: "assets/srihari.png",
+        imagePath: sriHariFilePath,
       );
     } else if (state == 2) {
       return const TileContainer(
-        imagePath: "assets/mouli.png",
+        imagePath: mouliFilePath,
       );
     }
 
